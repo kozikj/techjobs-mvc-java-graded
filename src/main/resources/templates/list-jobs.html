@@ -10,6 +10,43 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
+    <table th:fragment="job-results" class="job-listing" th:each="job : ${jobs}">
+        <tr>
+            <td th:text="${#strings.toUpperCase('Id') + ':'}">ID</td>
+            <td>
+                <a style="font-style: italic; color: red" th:href="@{/list/jobs(column=all)}" th:text="${job.id}"></a>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${#strings.toUpperCase('Name') + ':'}">Name</td>
+            <td style="font-style: italic" th:text="${job.name}"></td>
+        </tr>
+        <tr>
+            <td th:text="${#strings.toUpperCase('Employer' + ':')}">Employer</td>
+            <td>
+                <a style="font-style: italic" th:href="@{/list/jobs(column=employer, value=${job.employer})}" th:text="${job.employer}"></a>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${#strings.toUpperCase('Location' + ':')}">Location</td>
+            <td>
+                <a style="font-style: italic" th:href="@{/list/jobs(column=location, value=${job.location})}" th:text="${job.location}"></a>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${#strings.toUpperCase('Position Type' + ':')}">Position Type</td>
+            <td>
+                <a style="font-style: italic" th:href="@{/list/jobs(column=positionType, value=${job.positionType})}" th:text="${job.positionType}"></a>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="${#strings.toUpperCase('Skill' + ':')}">Skill</td>
+            <td>
+                <a style="font-style: italic" th:href="@{/list/jobs(column=coreCompetency, value=${job.coreCompetency})}" th:text="${job.coreCompetency}"></a>
+            </td>
+        </tr>
+    </table>
+
     <!-- TODO #1 - Use a loop to display job results in a table. -->
 
 </div>

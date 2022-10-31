@@ -28,8 +28,8 @@ public class TestTaskTwo {
     }
 
     /*
-    * Looks for a <table> element anywhere within the job listing page
-    * */
+     * Looks for a <table> element anywhere within the job listing page
+     * */
     @Test
     public void testJobListingUsesTable () throws Exception {
         mockMvc.perform(get("/list/jobs?column=coreCompetency&value=Ruby"))
@@ -38,8 +38,8 @@ public class TestTaskTwo {
     }
 
     /*
-    * Looks for the class 'table-listing' on the table in the job listing page
-    * */
+     * Looks for the class 'table-listing' on the table in the job listing page
+     * */
     @Test
     public void testJobListingUsesCSSClass () throws Exception {
         mockMvc.perform(get("/list/jobs?column=coreCompetency&value=Ruby"))
@@ -48,23 +48,23 @@ public class TestTaskTwo {
     }
 
     /*
-    * Looking at the first job table only, verify that all job fields are listed
-    * */
+     * Looking at the first job table only, verify that all job fields are listed
+     * */
     @Test
     public void testJobListingDisplaysAllJobFields () throws Exception {
         mockMvc.perform(get("/list/jobs?column=coreCompetency&value=Ruby"))
                 .andExpect(status().isOk())
-                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), '3')]").exists())
+                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td/a[contains(text(), '3')]").exists())
                 .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Junior Web Developer')]").exists())
-                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Cozy')]").exists())
-                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Portland')]").exists())
-                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Web - Front End')]").exists())
-                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Ruby')]").exists());
+                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td/a[contains(text(), 'Cozy')]").exists())
+                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td/a[contains(text(), 'Portland')]").exists())
+                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td/a[contains(text(), 'Web - Front End')]").exists())
+                .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td/a[contains(text(), 'Ruby')]").exists());
     }
 
     /*
-    * Verifies that there are exactly 3 Ruby jobs listed
-    * */
+     * Verifies that there are exactly 3 Ruby jobs listed
+     * */
     @Test
     public void testJobListingDisplaysAllRelevantJobs () throws Exception {
         mockMvc.perform(get("/list/jobs?column=coreCompetency&value=Ruby"))
@@ -76,8 +76,8 @@ public class TestTaskTwo {
     }
 
     /*
-    * Checks for the "View All" link on /list
-    * */
+     * Checks for the "View All" link on /list
+     * */
     @Test
     public void testViewAllLinkExists() throws Exception {
         mockMvc.perform(get("/list"))
